@@ -1,6 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 
-const restartHandler = async () => {
+const getRestart = async () => {
   let restart = 0;
 
   Console.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -15,4 +15,4 @@ const restartHandler = async () => {
   return restart;
 };
 
-export { restartHandler };
+export { getRestart };

@@ -1,18 +1,34 @@
 import { Console } from "@woowacourse/mission-utils";
 
-const getResult = async () => {
-  let restart = 0;
+const getResult = (computer, uiser) => {
+  let ball = 0;
+  let strike = 0;
+  let result = "";
 
-  Console.print("3개의 숫자를 모두 맞추셨습니다! 게임 종료");
-  Console.print("게임을 새로 시작하려면 1, 종료하려면 2을 입력하세요");
+  computer.forEach((number, index) => {
+    if (number === user[index]) {
+      strike++;
+    } else if (computer.includes(user[index])) {
+      ball++;
+    }
+  });
 
-  const INPUT = await Console.readLineAsync("");
-  restart = parseInt(INPUT);
-
-  if (![1, 2].includes(restart)) {
-    throw new Error("[ERROR] 잘못된 형식입니다.");
+  if (ball > 0 && strike > 0) {
+    result = `${ball}볼 ${strike}스트라이크`;
+  } else if (ball > 0) {
+    result = `${ball}볼`;
+  } else if (strike > 0) {
+    result = `${strike}스트라이크`;
+    if (strike === 3) {
+      Console.print("3스트라이크");
+      return true;
+    }
+  } else {
+    result = "낫싱";
   }
-  return restart;
+
+  Console.print(result);
+  return false;
 };
 
 export { getResult };

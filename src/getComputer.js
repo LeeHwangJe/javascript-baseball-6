@@ -9,7 +9,6 @@ const getComputer = () => {
       COMPUTER.push(NUM);
     }
   }
-
   return COMPUTER;
 };
 
